@@ -322,6 +322,9 @@
   '0909': '新疆-博尔塔拉蒙古自治州、双河',
   }*/
   const blackLisstOriginal = [
+    '4007629618',
+    '15714497336',
+    '059138491406',
     '059138274651',
     '073182887571',
     '9527331',
@@ -901,7 +904,7 @@
   };
   blackLisstOriginal.sort()
   const blackLisst = blackLisstOriginal.filter((item, index) => blackLisstOriginal.indexOf(item) === index)
-  
+
   let xData = ['河北省', '山西省', '辽宁省', '吉林省', '黑龙江省', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '海南省', '四川省', '贵州省', '云南省', '陕西省', '甘肃省', '青海省', '‌台湾省‌', '内蒙古', '广西', '西藏', '宁夏', '新疆', '北京市‌', '上海市', '‌天津市‌', '重庆市', '香港', '澳门', '特殊号码无归属地'];
   const zones = {};
   xData.forEach(ele => { zones[`${ele}`] = 0 });
@@ -910,6 +913,11 @@
     const regex = /^1[3-9]\d{9}$/; // 定义中国大陆手机号的正则表达式
     return regex.test(phone);
   }
+  const userAgent = window.navigator.userAgent.toLocaleLowerCase()
+  const isAndroid = userAgent.includes('android');
+  const isIos = userAgent.includes('iphone');
+  // const isWindows = userAgent.includes('windows');
+  const isMobile = isAndroid || isIos;
   for (let i = 0, l = blackLisst.length; i < l; i++) {
     const number = blackLisst[i];
     // const index = i + 1 // 序号
@@ -969,7 +977,7 @@
   };
   
   const yData = Object.values(zones).sort(function (a, b) { return a - b});
-  const myChart = echarts.init(document.getElementsByClassName('main')[0]);
+  const echartsContainer = document.getElementsByClassName('main')[0];
   const pieData = [];
   const legend1 = {};
   const legend2 = {};
@@ -997,7 +1005,7 @@
       text: `${blackLisst.length}个 骚扰电话归属地统计`,
       left: 'center',
       // subtext: `开始时间：2026/01/01。截止时间：${new Date().toLocaleString().substring(0, 9)}`,
-      subtext: `开始时间：2026/01/01。截止时间：2026/05/20`,
+      subtext: `开始：2026/01/01 截止：2026/05/20`,
       subtextStyle: {
         color: '#d0d',
         fontSize: 16,
@@ -1005,12 +1013,23 @@
     },
     legend: {
       type: 'scroll',
+      width: '80%',
       bottom: 0,
       selected: legendSelected,
       data: xData
     },
     tooltip: {
       trigger: 'item'
+    },
+    toolbox: {
+      left: 'center',
+      bottom: '3%',
+      show: true,
+      feature: {
+        mark: { show: true },
+        restore: { show: true },
+        saveAsImage: { show: true }
+      }
     },
     series: [
       {
@@ -1020,13 +1039,16 @@
         radius: ['0%', '76%'],
         data: pieData,
         label: {
-          show: true,
+          show: false,
           fontSize: 22,
           formatter: function (labelData) {
             return `${labelData.name}: ${labelData.value}`
           }
         },
         emphasis: {
+          label: {
+            show: false
+          },
           itemStyle: {
             shadowBlur: 10,
             shadowOffsetX: 0,
@@ -1036,7 +1058,7 @@
       }
     ]
   };
-  myChart.setOption(option);
+
   $('.tbody').html(tbodyHtml);
   let toolbar = document.createElement('div');
   toolbar.innerHTML = `
@@ -1073,5 +1095,22 @@
       XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       XLSX.writeFile(wb, "骚扰电话.xlsx");
     };
+
+    const myTable_wrapper = document.getElementById('myTable_wrapper');
+    if (isMobile) {
+      console.log('%c [ mobile option ]-1058', 'font-size:13px; background:skyblue; color:#fff;', option);
+      option.series[0].label.show = false;
+      option.series[0].emphasis.show = false;
+      echartsContainer.style.width = '100%';
+      echartsContainer.style.height = '50vh';
+      myTable_wrapper.style.width = '100%';
+    } else {
+      option.series[0].label.show = true;
+      option.series[0].emphasis.show = true;
+      console.log('%c [ PC option ]-1058', 'font-size:13px; background:skyblue; color:#fff;', option);
+    }
+    const myChart = echarts.init(echartsContainer, null, { locale: 'ZH', });
+    myChart.setOption(option);
+
   });
 })()
