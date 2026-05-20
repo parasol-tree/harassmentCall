@@ -996,8 +996,12 @@
     title: {
       text: `${blackLisst.length}个 骚扰电话归属地统计`,
       left: 'center',
-      // subtext: `开始时间：2026/01/01。截止时间：${new Date().toLocaleString().substring(0, 9)}`
-      subtext: `开始时间：2026/01/01。截止时间：2026/05/20`
+      subtext: `开始时间：2026/01/01。截止时间：${new Date().toLocaleString().substring(0, 9)}`,
+      // subtext: '截止时间：2026/05/15'
+      subtextStyle: {
+        color: '#d0d',
+        fontSize: 16,
+      },
     },
     legend: {
       type: 'scroll',
