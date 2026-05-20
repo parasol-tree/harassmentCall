@@ -925,7 +925,7 @@
     if (isPhone) {
       const phonePrefix3 = number.substring(0, 3);
       const phonePrefix7 = number.substring(0, 7);
-      const response = await fetch(`http://127.0.0.1:3000/json/carrier_data_${phonePrefix3}.json`);
+      const response = await fetch(`/json/carrier_data_${phonePrefix3}.json`);
       if (response) {
         const status = response.status
         if (status === 200) {
