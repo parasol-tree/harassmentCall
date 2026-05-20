@@ -1,1 +1,67 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>骚扰电话统计</title><style>*{margin:0;padding:0;box-sizing:border-box}body,html{width:100%;font-size:20px;font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;background-color:#fff;overflow-x:hidden}body{padding:20px 20px 0}.main{width:70%;height:86vh;margin-left:auto;margin-right:auto;margin-bottom:20px}#myTable_wrapper{width:70%;margin-left:auto;margin-right:auto;padding-bottom:20px}</style><link rel="stylesheet" href="/stylesheets/select.dataTables.min.css.css"><link rel="stylesheet" href="/stylesheets/select.dataTables.selected.css.css"></head><body><div class="main"></div><table id="myTable" class="display myTable cell-border"><thead><tr><th style="text-align:center">归属地</th><th style="text-align:center">号码</th></tr></thead><tbody class="tbody"></tbody></table></body></html><script src="/javascripts/jQuery.4.0.0.min.js"></script><script src="/javascripts/loading.1.0.0.min.js"></script><script>$.loadingInstance.loading({category:"vientiane-corps"})</script><script src="/javascripts/vconsole.3.15.1.min.js"></script><script>const vConsole=new window.VConsole</script><script src="/javascripts/echarts.6.0.0.min.js"></script><script src="/javascripts/DataTables.min.js"></script><script src="/javascripts//DataTables.select.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="/javascripts/init.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>骚扰电话统计</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      font-size: 20px;
+      font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #fff;
+      overflow-x: hidden;
+    }
+    body {
+      padding: 20px 20px 0;
+    }
+    .main {
+      width: 70%;
+      height: 86vh;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
+    #myTable_wrapper {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="/stylesheets/select.dataTables.min.css.css">
+  <link rel="stylesheet" href="/stylesheets/select.dataTables.selected.css.css">
+</head>
+<body>
+  <div class="main"></div>
+  <table id="myTable" class="display myTable cell-border ">
+      <thead>
+          <tr>
+              <!-- <th style="text-align: center;">序号</th> -->
+              <th style="text-align: center;">归属地</th>
+              <th style="text-align: center;">号码</th>
+          </tr>
+      </thead>
+      <tbody class="tbody">
+      </tbody>
+  </table>
+</body>
+</html>
+<script src="/javascripts/jQuery.4.0.0.min.js"></script>
+<script src="/javascripts/loading.1.0.0.min.js"></script>
+<script>$.loadingInstance.loading({category:'vientiane-corps'});</script>
+<script src="/javascripts/vconsole.3.15.1.min.js"></script>
+<script>const vConsole = new window.VConsole();</script>
+<script src="/javascripts/echarts.6.0.0.min.js"></script>
+<script src="/javascripts/DataTables.min.js"></script>
+<script src="/javascripts//DataTables.select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/javascripts/init.js"></script>
